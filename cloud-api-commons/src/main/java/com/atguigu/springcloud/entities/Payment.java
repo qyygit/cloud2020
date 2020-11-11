@@ -1,4 +1,4 @@
-package com.atguigu.springcloud.entity;
+package com.atguigu.springcloud.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,14 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor  //有参构造函数
 @NoArgsConstructor    //无参构造函数
-public class CommonResult<T> {
-
-    private Integer code;
-    private String message;
-    private T data;
-
-    public CommonResult(Integer code ,String message){
-        this(code,message,null);
-    }
-
+public class Payment {
+    private Long id;
+    private String  serial;
 }

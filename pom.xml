@@ -10,6 +10,9 @@
   <modules>
     <module>cloud-provider-payment8001</module>
       <module>cloud-consumer-order80</module>
+      <module>cloud-api-commons</module>
+      <module>cloud-eureka-server7001</module>
+      <module>cloud-eureka-server7002</module>
   </modules>
 
   <packaging>pom</packaging>
@@ -29,7 +32,14 @@
 
   <!--子模块继承之后，提供作用：锁定版本+子module不用groupId和version-->
   <dependencyManagement>
+
     <dependencies>
+      <!--引入自己定义的api通用包，可以使用Payment支付Entity-->
+      <dependency>
+        <groupId>com.atguigu.springcloud</groupId>
+        <artifactId>cloud-api-commons</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <!--spring boot 2.2.2-->
       <dependency>
         <groupId>org.springframework.boot</groupId>

@@ -1,7 +1,7 @@
 package com.atguigu.springcloud.controller;
 
-import com.atguigu.springcloud.entity.CommonResult;
-import com.atguigu.springcloud.entity.Payment;
+import com.atguigu.springcloud.entities.CommonResult;
+import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping(value = "/payment/create")
-    public CommonResult Create( Payment payment){
+    public CommonResult Create(@RequestBody Payment payment){
        int result =  paymentService.create(payment);
         log.info("***************c插入成功********结果是  : "  + result);
         if (result>0){
