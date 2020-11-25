@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -34,7 +35,7 @@ public class PaymentController {
 
     @PostMapping(value = "/payment/create")
     public CommonResult Create(@RequestBody Payment payment){
-       int result =  paymentService.create(payment);
+        int result =  paymentService.create(payment);
         log.info("***************c插入成功********结果是  : "  + result);
         if (result>0){
             return  new CommonResult(200,"插入数据库成功" + "serverPort" +serverPort ,result);
@@ -67,6 +68,25 @@ public class PaymentController {
             log.info("" + instance.getServiceId()+"\t"+instance.getPort()+"\t"+instance.getUri());
         }
         return this.discoveryClient;
+    }
+
+    //自定义ribbon负载均衡算法,返回端口号
+    @GetMapping(value = "/payment/lb")
+    public String getPaymentLB(){
+        return serverPort;
+    }
+
+
+    @GetMapping(value = "/payment/Feign/timeOut")
+    public String PaymentFeignTimeOut(){
+
+        //暂停几秒线程
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 
 
