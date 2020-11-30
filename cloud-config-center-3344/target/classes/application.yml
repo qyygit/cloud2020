@@ -8,10 +8,10 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:qyygit/sringcloud-config.git #github仓库上面的git仓库名字
+          uri: git@github.com:qyygit/cloud2020.git #github仓库上面的git仓库名字
           ##搜索目录
           search-paths:
-            - sringcloud-config
+            - cloud2020
       #读取分支
       label: master
 
