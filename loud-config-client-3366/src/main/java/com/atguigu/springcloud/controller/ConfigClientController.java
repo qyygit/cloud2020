@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @program: cloud2020
  * @description:
  * @author: Mr.Yang
- * @create: 2020-12-01 15:17
+ * @create: 2020-12-02 15:34
  **/
 @RestController
 @RefreshScope
 public class ConfigClientController {
-
-    @Value("${config.info}")
-    private String configInfo;  //要访问的3344上的信息
+    @Value("${server.port}")
+    private String serverPort;
+    @Value(("${config.info}"))
+    private String configInfo;
 
     @GetMapping("/configInfo")
     public String getConfigInfo(){
-        return configInfo;
+        return "serverPort: "+serverPort+"\t\n\n configInfo: "+configInfo;
     }
 }
